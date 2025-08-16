@@ -41,7 +41,7 @@
 <body class="theme-home">
   <header>
     <h1 id="title">You are the  next engineer</h1>
-    <div class="muted" id="subtitle"> • Select Subject</div>
+    <div class="muted" id="subtitle"> </div>
   </header>
 
   <main class="wrap">
@@ -176,7 +176,7 @@
       levelLabel.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
       // วางปุ่มบท
       topicsBox.innerHTML = (DATA[currentSubject][currentLevel] || [])
-        .map(t => `<a class="btn" href="#" data-topic="${t}">${t}<span class="tag">บท</span></a>`)
+        .map(t => `<a class="btn" href="#" data-topic="${t}">${t}<span class="tag"></span></a>`)
         .join('') || `<div class="muted">ยังไม่มีรายการบท</div>`;
       // bind คลิกบท -> ไปหน้า เลือก เนื้อหา/ข้อสอบ
       topicsBox.querySelectorAll('[data-topic]').forEach(btn=>{
@@ -185,7 +185,7 @@
           currentTopic = btn.dataset.topic;
           topicLabel.textContent = `${currentTopic}`;
           title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()} • ${currentTopic}`;
-          subtitle.textContent = "เลือกหัวข้อย่อย";
+          
           show('actions');
         });
       });
@@ -232,6 +232,7 @@
 </script>
 </body>
 </html>
+
 
 
 
