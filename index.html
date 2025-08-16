@@ -41,7 +41,7 @@
 <body class="theme-home">
   <header>
     <h1 id="title">You are the  next engineer</h1>
-    <div class="muted" id="subtitle">หน้าแรก (ขาว–ดำ) • Select Subject</div>
+    <div class="muted" id="subtitle"> • Select Subject</div>
   </header>
 
   <main class="wrap">
@@ -152,7 +152,7 @@
       currentSubject = a.dataset.subject;
       applyTheme(currentSubject);                   // เปลี่ยนสีทั้งหน้า
       title.textContent = DATA[currentSubject].label;
-      subtitle.textContent = "เลือกชั้นเรียน";
+      
       subjectLabel.textContent = DATA[currentSubject].label;
       show('levels');
     });
@@ -162,8 +162,6 @@
   backHome.addEventListener('click', e=>{
     e.preventDefault();
     document.body.classList.remove('theme-math','theme-physics','theme-chem');
-    title.textContent = "วิทยาศาสตร์ ม.ปลาย";
-    subtitle.textContent = "หน้าแรก (ขาว–ดำ) • เลือกวิชา";
     currentSubject = currentLevel = currentTopic = null;
     show('home');
   });
@@ -174,7 +172,7 @@
       e.preventDefault();
       currentLevel = a.dataset.level; // m4/m5/m6
       title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
-      subtitle.textContent = "เลือกบทเรียน";
+      
       levelLabel.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
       // วางปุ่มบท
       topicsBox.innerHTML = (DATA[currentSubject][currentLevel] || [])
@@ -199,7 +197,7 @@
   backLevels.addEventListener('click', e=>{
     e.preventDefault();
     title.textContent = `${DATA[currentSubject].label}`;
-    subtitle.textContent = "เลือกชั้นเรียน";
+    
     currentLevel = currentTopic = null;
     show('levels');
   });
@@ -208,7 +206,7 @@
   backTopics.addEventListener('click', e=>{
     e.preventDefault();
     title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
-    subtitle.textContent = "เลือกบทเรียน";
+    
     currentTopic = null;
     show('topics');
   });
@@ -234,6 +232,7 @@
 </script>
 </body>
 </html>
+
 
 
 
