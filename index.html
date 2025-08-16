@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ypu are the next engineer</title>
+<title>You are the next engineer</title>
 <style>
   :root{
-    /* โทนเริ่มต้น (ขาว–ดำ) */
+    /* Home (black & white) */
     --bg:#ffffff; --fg:#111111; --muted:#666;
     --line:#e6e6e6; --primary:#111; --btn-fg:#111; --btn-bg:#fff; --btn-border:#111;
     --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.12);
   }
-  /* ธีมรายวิชา */
+  /* Subject themes */
   .theme-math   { --bg:#f6fbff; --fg:#1e2b4a; --muted:#5c6c8a; --line:#dfeafe; --primary:#1b74c9; --btn-fg:#0b3a6b; --btn-bg:#fff; --btn-border:#1b74c9;}
   .theme-physics{ --bg:#fffaf3; --fg:#351f00; --muted:#6b5435; --line:#ffe4c7; --primary:#f57c00; --btn-fg:#5b3400; --btn-bg:#ffffff; --btn-border:#f57c00;}
   .theme-chem   { --bg:#fff6fb; --fg:#311432; --muted:#6a4a6d; --line:#f3d1ef; --primary:#b8008f; --btn-fg:#5a0c54; --btn-bg:#ffffff; --btn-border:#b8008f;}
 
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--fg);
-       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans Thai",sans-serif;line-height:1.6}
+       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;line-height:1.6}
   header{padding:28px 16px;text-align:center;border-bottom:1px solid var(--line)}
   h1{margin:0;color:var(--fg);font-size:clamp(26px,4vw,40px)}
   .muted{color:var(--muted)}
@@ -33,44 +33,42 @@
   }
   .btn:active{transform:translateY(1px)}
   .back{display:inline-block;margin-top:8px;color:var(--primary);text-decoration:none;font-weight:600}
-  .tag{display:inline-block;margin-left:8px;font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:#fff}
-  /* ไฮไลต์หัวข้อ */
   .headline{font-size:18px;font-weight:700;margin:6px 0 0;color:var(--primary)}
 </style>
 </head>
-<body class="theme-home">
+<body>
   <header>
-    <h1 id="title">You are the  next engineer</h1>
-    <div class="muted" id="subtitle"> </div>
+    <h1 id="title">You are the next engineer</h1>
+    <div class="muted" id="subtitle">Home (black & white) • Choose a subject</div>
   </header>
 
   <main class="wrap">
-    <!-- หน้า: เลือกวิชา -->
+    <!-- View: Subjects -->
     <section id="view-home" class="stack">
-      <a class="btn" data-subject="math" href="#">Math</a>
+      <a class="btn" data-subject="math" href="#">Mathematics</a>
       <a class="btn" data-subject="physics" href="#">Physics</a>
-      <a class="btn" data-subject="chem" href="#">Chemical</a>
+      <a class="btn" data-subject="chem" href="#">Chemistry</a>
     </section>
 
-    <!-- หน้า: เลือกชั้น -->
+    <!-- View: Levels -->
     <section id="view-levels" style="display:none">
       <a href="#" class="back" id="back-to-home">← Back</a>
       <div class="headline" id="subject-label"></div>
       <div class="stack">
-        <a class="btn" data-level="m4" href="#">M.4</a>
-        <a class="btn" data-level="m5" href="#">M.5</a>
-        <a class="btn" data-level="m6" href="#">M.6</a>
+        <a class="btn" data-level="m4" href="#">Grade 10 (M.4)</a>
+        <a class="btn" data-level="m5" href="#">Grade 11 (M.5)</a>
+        <a class="btn" data-level="m6" href="#">Grade 12 (M.6)</a>
       </div>
     </section>
 
-    <!-- หน้า: รายการบท -->
+    <!-- View: Topics -->
     <section id="view-topics" style="display:none">
       <a href="#" class="back" id="back-to-levels">← Back</a>
       <div class="headline" id="level-label"></div>
       <div class="stack" id="topics"></div>
     </section>
 
-    <!-- หน้า: ตัวเลือก เนื้อหา / ข้อสอบ ของบท -->
+    <!-- View: Actions (Content / Test) -->
     <section id="view-actions" style="display:none">
       <a href="#" class="back" id="back-to-topics">← Back</a>
       <div class="headline" id="topic-label"></div>
@@ -82,29 +80,29 @@
   </main>
 
 <script>
-  // ----- ข้อมูลบทเรียน -----
+  // ---------- Data (all-English) ----------
   const DATA = {
     math: {
-      label: "Math",
-      m4: ["บทเชต","บทตรรกะศาสตร์","บทจำนวนจริง","บทฟังก์ชัน","บทเมทริก","บทเรขาคณิตวิเคราะห์"],
-      m5: ["บทเอ็กซ์โพเนเชียลและลอการิทึม","บทตรีโกณมิติ","บทเวกเตอร์","บทจำนวนเชิงซ้อน","บทความน่าจะเป็น"],
-      m6: ["สถิติ","ลำดับและอนุกรม","แคลคูลัส"]
+      label: "Mathematics",
+      m4: ["Sets","Logic","Real Numbers","Functions","Matrices","Analytic Geometry"],
+      m5: ["Exponential & Logarithms","Trigonometry","Vectors","Complex Numbers","Probability"],
+      m6: ["Statistics","Sequences & Series","Calculus"]
     },
     physics: {
       label: "Physics",
-      m4: ["การวัดและเวกเตอร์","การเคลื่อนที่แนวตรง","กฎการเคลื่อนที่ของนิวตัน","งานและพลังงาน","โมเมนตัมและการชน","สมดุลกล"],
-      m5: ["การเคลื่อนที่แบบวงกลมแลโพรเจคไทล","การเคลื่อนที่แบบsimple hamonic","การสั่นและคลื่น","เสียง","แสงและทัศนศาสตร์","ไฟฟ้าสถิต","ไฟฟ้ากระแสและวงจรไฟฟ้า"],
-      m6: ["สนามแม่เหล็กและไฟฟ้าแม่เหล็ก","ความร้อนและแก๊ส","ฟิสิกส์สมัยใหม่"]
+      m4: ["Measurement & Vectors","One-Dimensional Motion","Newton’s Laws","Work & Energy","Momentum & Collisions","Static Equilibrium"],
+      m5: ["Circular & Projectile Motion","Simple Harmonic Motion","Waves & Oscillations","Sound","Optics","Electrostatics","DC Circuits"],
+      m6: ["Magnetism & Electromagnetism","Thermal Physics & Gases","Modern Physics"]
     },
     chem: {
-      label: "Chemical",
-      m4: ["สารและสมบัติของสาร","โครงสร้างอะตอมและตารางธาตุ","พันธะเคมี","โมลและสมการเคมี","ปริมาณสัมพันธ์"],
-      m5: ["สารละลาย","อัตราการเกิดปฏิกิริยาเคมี","สมดุลเคมี"],
-      m6: ["กรด–เบส","ไฟฟ้าเคมี","เคมีอินทรีย"]
+      label: "Chemistry",
+      m4: ["Matter & Properties","Atomic Structure & Periodic Table","Chemical Bonding","Mole & Chemical Equations","Stoichiometry"],
+      m5: ["Solutions","Reaction Rates","Chemical Equilibrium"],
+      m6: ["Acids & Bases","Electrochemistry","Organic Chemistry"]
     }
   };
 
-  // ----- อ้างอิง DOM -----
+  // ---------- DOM refs ----------
   const title = document.getElementById('title');
   const subtitle = document.getElementById('subtitle');
   const subjectLabel = document.getElementById('subject-label');
@@ -124,12 +122,12 @@
   const btnContent = document.getElementById('btn-content');
   const btnExam    = document.getElementById('btn-exam');
 
-  // ----- สถานะ -----
+  // ---------- State ----------
   let currentSubject = null; // 'math' | 'physics' | 'chem'
   let currentLevel   = null; // 'm4' | 'm5' | 'm6'
   let currentTopic   = null; // string
 
-  // ตั้งธีมตามวิชา
+  // Apply theme by subject
   function applyTheme(subj){
     document.body.classList.remove('theme-math','theme-physics','theme-chem');
     if(subj==='math') document.body.classList.add('theme-math');
@@ -137,7 +135,7 @@
     if(subj==='chem') document.body.classList.add('theme-chem');
   }
 
-  // เปลี่ยนมุมมองอย่างง่าย
+  // Simple view switch
   function show(view){
     viewHome.style.display   = (view==='home')?'':'none';
     viewLevels.style.display = (view==='levels')?'':'none';
@@ -145,86 +143,90 @@
     viewActions.style.display= (view==='actions')?'':'none';
   }
 
-  // เลือกวิชา
+  // Subject selection
   document.querySelectorAll('[data-subject]').forEach(a=>{
     a.addEventListener('click', e=>{
       e.preventDefault();
       currentSubject = a.dataset.subject;
-      applyTheme(currentSubject);                   // เปลี่ยนสีทั้งหน้า
+      applyTheme(currentSubject);
       title.textContent = DATA[currentSubject].label;
-      
+      subtitle.textContent = "Choose a grade level";
       subjectLabel.textContent = DATA[currentSubject].label;
       show('levels');
     });
   });
 
-  // ย้อนกลับไปหน้าแรก (คืนเป็นขาว–ดำ)
+  // Back to home (reset to black & white)
   backHome.addEventListener('click', e=>{
     e.preventDefault();
     document.body.classList.remove('theme-math','theme-physics','theme-chem');
+    title.textContent = "You are the next engineer";
+    subtitle.textContent = "Home (black & white) • Choose a subject";
     currentSubject = currentLevel = currentTopic = null;
     show('home');
   });
 
-  // เลือกชั้น
+  // Level selection
   document.querySelectorAll('#view-levels [data-level]').forEach(a=>{
     a.addEventListener('click', e=>{
       e.preventDefault();
       currentLevel = a.dataset.level; // m4/m5/m6
       title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
-      
+      subtitle.textContent = "Choose a topic";
       levelLabel.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
-      // วางปุ่มบท
+
+      // Build topic buttons
       topicsBox.innerHTML = (DATA[currentSubject][currentLevel] || [])
-        .map(t => `<a class="btn" href="#" data-topic="${t}">${t}<span class="tag"></span></a>`)
-        .join('') || `<div class="muted">ยังไม่มีรายการบท</div>`;
-      // bind คลิกบท -> ไปหน้า เลือก เนื้อหา/ข้อสอบ
+        .map(t => `<a class="btn" href="#" data-topic="${t}">${t}</a>`)
+        .join('') || `<div class="muted">No topics yet</div>`;
+
+      // Bind click -> actions
       topicsBox.querySelectorAll('[data-topic]').forEach(btn=>{
         btn.addEventListener('click', ev=>{
           ev.preventDefault();
           currentTopic = btn.dataset.topic;
-          topicLabel.textContent = `${currentTopic}`;
+          topicLabel.textContent = currentTopic;
           title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()} • ${currentTopic}`;
-          
+          subtitle.textContent = "Choose: Content or Test";
           show('actions');
         });
       });
+
       show('topics');
     });
   });
 
-  // ย้อนกลับไปเลือกชั้น
+  // Back to levels
   backLevels.addEventListener('click', e=>{
     e.preventDefault();
     title.textContent = `${DATA[currentSubject].label}`;
-    
+    subtitle.textContent = "Choose a grade level";
     currentLevel = currentTopic = null;
     show('levels');
   });
 
-  // ย้อนกลับไปรายการบท
+  // Back to topics
   backTopics.addEventListener('click', e=>{
     e.preventDefault();
     title.textContent = `${DATA[currentSubject].label} • ${currentLevel.toUpperCase()}`;
-    
+    subtitle.textContent = "Choose a topic";
     currentTopic = null;
     show('topics');
   });
 
-  // ปุ่ม "เนื้อหา" และ "ข้อสอบ" (ตอนนี้ทำเป็นตัวอย่าง alert)
+  // Actions (demo)
   btnContent.addEventListener('click', e=>{
     e.preventDefault();
-    alert(`(ตัวอย่าง) เปิดเนื้อหา: ${currentTopic}`);
-    // ถ้าจะลิงก์ไปหน้าไฟล์จริง ให้เปลี่ยนเป็น:
+    alert(`(Demo) Open content: ${currentTopic}`);
+    // Replace with a real link if you have a page or PDF:
     // location.href = `/${currentSubject}/${currentLevel}/${slug(currentTopic)}/content.html`;
   });
   btnExam.addEventListener('click', e=>{
     e.preventDefault();
-    alert(`(ตัวอย่าง) เปิดข้อสอบ: ${currentTopic}`);
-    // เปลี่ยนเป็นลิงก์จริงได้เหมือนกัน
+    alert(`(Demo) Open test: ${currentTopic}`);
   });
 
-  // ตัวช่วยแปลงชื่อเป็น slug (หากจะใช้ทำพาธไฟล์จริง)
+  // Optional: slug helper if you want to build real paths later
   function slug(str){
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
       .replace(/[^\w\s-]/g,'').trim().replace(/\s+/g,'-').toLowerCase();
@@ -232,8 +234,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
